@@ -32,6 +32,11 @@
         .iframe-container {
             margin-top: 1rem;
         }
+        .responsive-iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -64,27 +69,45 @@
                     <div class="tab" data-target="humanitarian">Humanitarian Assistance</div>
                 </div>
 
+                <!-- Education -->
                 <div id="education" class="tab-content active">
                     <h2>Education</h2>
                     <p>Visualizations related to education funding, program outcomes, and long-term effects.</p>
                     <div class="iframe-container">
-                        <iframe src="YOUR_EDUCATION_VIZ_URL" title="Education Dashboard" class="responsive-iframe" allowfullscreen></iframe>
+                        <iframe 
+                            src="https://devdash.shinyapps.io/disrupted-development-education/" 
+                            title="Education Dashboard" 
+                            class="responsive-iframe" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
 
+                <!-- Health -->
                 <div id="health" class="tab-content">
                     <h2>Health</h2>
                     <p>Data on healthcare access, infrastructure, and public health outcomes following aid changes.</p>
                     <div class="iframe-container">
-                        <iframe src="YOUR_HEALTH_VIZ_URL" title="Health Dashboard" class="responsive-iframe" allowfullscreen></iframe>
+                        <iframe 
+                            src="https://devdash.shinyapps.io/disrupted-development-health/" 
+                            title="Health Dashboard" 
+                            class="responsive-iframe" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
 
+                <!-- Humanitarian -->
                 <div id="humanitarian" class="tab-content">
                     <h2>Humanitarian Assistance</h2>
                     <p>Interactive insights into humanitarian aid flows and response effectiveness.</p>
                     <div class="iframe-container">
-                        <iframe src="YOUR_HUMANITARIAN_VIZ_URL" title="Humanitarian Dashboard" class="responsive-iframe" allowfullscreen></iframe>
+                        <iframe 
+                            src="https://devdash.shinyapps.io/disrupted-development-humanitarian/" 
+                            title="Humanitarian Dashboard" 
+                            class="responsive-iframe" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
             </div>
