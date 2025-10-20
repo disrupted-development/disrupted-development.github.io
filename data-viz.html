@@ -37,6 +37,25 @@
             height: 80vh;
             border: none;
         }
+        .data-notes {
+            background: #f8f8f8;
+            border-left: 4px solid #a10000;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        .data-notes h3 {
+            margin-top: 0;
+            color: #a10000;
+        }
+        .data-notes a {
+            color: #a10000;
+            text-decoration: none;
+        }
+        .data-notes a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -61,7 +80,9 @@
         <section class="section">
             <div class="container">
                 <h1 class="page-title">Interactive Data Dashboard</h1>
-                <p class="page-subtitle">Explore research findings across sectors: Education, Health, and Humanitarian Assistance.</p>
+                <p class="page-subtitle">
+                    Explore research findings across sectors: Education, Health, and Humanitarian Assistance.
+                </p>
 
                 <div class="tabs">
                     <div class="tab active" data-target="education">Education</div>
@@ -72,7 +93,11 @@
                 <!-- Education -->
                 <div id="education" class="tab-content active">
                     <h2>Education</h2>
-                    <p>These interactive maps are designed to help you visualize where and to what extent development funding from the United States has been affected across countries. Use the tabs to explore the impacts on education, health, and humanitarian assistance.</p>
+                    <p>
+                        These interactive maps show how U.S. development funding disruptions have affected education programs globally.
+                        Explore patterns of funding change by country and sector.
+                    </p>
+
                     <div class="iframe-container">
                         <iframe 
                             src="https://devdash.shinyapps.io/disrupted-development-education/" 
@@ -81,12 +106,37 @@
                             allowfullscreen>
                         </iframe>
                     </div>
+
+                    <div class="data-notes">
+                        <h3>About the Data</h3>
+                        <p>
+                            The data displayed in this dashboard come from the dataset provided by
+                            <a href="https://mypivot.substack.com/p/updated-status-remaining-funding" target="_blank">My Pivot</a>,
+                            which tracks the current status of remaining U.S. development funding allocations.
+                            The authors of the original publication kindly shared the source data for research use in this project.
+                        </p>
+                        <p>
+                            Funding data are organized by <strong>Foreign Assistance (FA) sectors</strong>, a classification used by
+                            USAID and the U.S. Department of State to categorize aid by objective.
+                            In this section, we focus on <em>Education</em> (FA sector 113), which includes investments in
+                            basic, secondary, and higher education, as well as workforce development.
+                        </p>
+                        <p>
+                            Each map visualizes funding disruptions between 2000 and 2023, displaying where and to what extent
+                            education-related development efforts have been affected globally.
+                        </p>
+                        <p><em>Source:</em> My Pivot (2024), U.S. Foreign Assistance Data; analysis by the Disrupted Development research team.</p>
+                    </div>
                 </div>
 
                 <!-- Health -->
                 <div id="health" class="tab-content">
                     <h2>Health</h2>
-                    <p>These interactive maps are designed to help you visualize where and to what extent development funding from the United States has been affected across countries. Use the tabs to explore the impacts on education, health, and humanitarian assistance.</p>
+                    <p>
+                        These interactive visualizations highlight how U.S. foreign assistance disruptions have impacted
+                        global health initiatives, from disease control to healthcare infrastructure.
+                    </p>
+
                     <div class="iframe-container">
                         <iframe 
                             src="https://devdash.shinyapps.io/disrupted-development-health/" 
@@ -95,12 +145,33 @@
                             allowfullscreen>
                         </iframe>
                     </div>
+
+                    <div class="data-notes">
+                        <h3>About the Data</h3>
+                        <p>
+                            This data visualization draws from the same dataset provided by 
+                            <a href="https://mypivot.substack.com/p/updated-status-remaining-funding" target="_blank">My Pivot</a>,
+                            reflecting U.S. funding allocations across the <em>Health</em> sector (FA sector 122).
+                            These include initiatives targeting infectious diseases, maternal and child health, nutrition,
+                            and global health systems strengthening.
+                        </p>
+                        <p>
+                            The dashboards were developed using R Shiny and hosted on 
+                            <a href="https://shinyapps.io" target="_blank">shinyapps.io</a>,
+                            allowing interactive exploration of region-specific trends and changes over time.
+                        </p>
+                        <p><em>Source:</em> My Pivot (2024), U.S. Foreign Assistance Data; analysis by the Disrupted Development research team.</p>
+                    </div>
                 </div>
 
                 <!-- Humanitarian -->
                 <div id="humanitarian" class="tab-content">
                     <h2>Humanitarian Assistance</h2>
-                    <p>These interactive maps are designed to help you visualize where and to what extent development funding from the United States has been affected across countries. Use the tabs to explore the impacts on education, health, and humanitarian assistance.</p>
+                    <p>
+                        Explore how disruptions to U.S. development funding have affected emergency response and humanitarian aid,
+                        including disaster relief, refugee assistance, and crisis stabilization.
+                    </p>
+
                     <div class="iframe-container">
                         <iframe 
                             src="https://devdash.shinyapps.io/disrupted-development-humanitarian/" 
@@ -108,6 +179,22 @@
                             class="responsive-iframe" 
                             allowfullscreen>
                         </iframe>
+                    </div>
+
+                    <div class="data-notes">
+                        <h3>About the Data</h3>
+                        <p>
+                            This dashboard focuses on the <em>Humanitarian Assistance</em> sector (FA sector 152),
+                            capturing shifts in funding for emergency and disaster-related programs.
+                            Data were obtained from the
+                            <a href="https://mypivot.substack.com/p/updated-status-remaining-funding" target="_blank">My Pivot</a> publication,
+                            which tracks active and paused funding streams.
+                        </p>
+                        <p>
+                            Results are aggregated by region and funding type, providing insight into how critical
+                            humanitarian operations may have been delayed or restructured due to recent policy and budgetary changes.
+                        </p>
+                        <p><em>Source:</em> My Pivot (2025), U.S. Foreign Assistance Data; analysis by the Disrupted Development research team.</p>
                     </div>
                 </div>
             </div>
