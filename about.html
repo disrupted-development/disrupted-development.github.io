@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .team-block {
-            background: #f8f8f8;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 18px rgba(43, 28, 16, 0.06);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 12px;
         }
         .team-member {
             margin-bottom: 1rem;
@@ -26,37 +28,62 @@
             text-decoration: underline;
         }
         .team-role {
-            color: #555;
+            color: var(--text-muted);
         }
         .affiliation-card {
             margin-bottom: 1rem;
-            background: #f8f8f8;
-            padding: 1rem;
-            border-radius: 10px;
+            background: var(--surface);
+            padding: 1.25rem;
+            border-radius: 12px;
         }
         .affiliation-link {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             text-decoration: none;
             color: inherit;
+            gap: 0.9rem;
+        }
+        .affiliations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .affiliation-logo-frame {
+            width: 100%;
+            max-width: 260px;
+            height: 78px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background: #fff;
+            padding: 0.4rem 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .affiliation-logo {
-            width: 60px;
-            height: auto;
-            margin-right: 1rem;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            margin-right: 0;
         }
         .affiliation-content h3 {
             margin: 0;
-            color: #a10000;
+            color: var(--accent);
         }
         .advisory-grid {
-            background: #f8f8f8;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 18px rgba(43, 28, 16, 0.06);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 12px;
         }
         .advisory-grid p {
             margin: 0;
             font-size: 1rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -64,7 +91,17 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img src="images/iu-trident-logo.png" alt="IU Logo" class="nav-logo">
+                <div class="nav-logos" aria-label="Partner institution logos">
+                    <div class="nav-logo-box">
+                        <img src="images/hamiltonlugar_lockup_WEB_h6.png" alt="Indiana University Hamilton Lugar School logo" class="nav-logo">
+                    </div>
+                    <div class="nav-logo-box">
+                        <img src="images/Edinburgh.jpeg" alt="University of Edinburgh logo" class="nav-logo">
+                    </div>
+                    <div class="nav-logo-box">
+                        <img src="images/Birmingham.jpeg" alt="University of Birmingham logo" class="nav-logo">
+                    </div>
+                </div>
                 <span class="nav-title">Disrupted Development</span>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -127,34 +164,67 @@
 
                 <h2 class="section-title">Global Advisory Group</h2>
                 <div class="advisory-grid">
-                    <p>Our advisory group includes <strong>10+ members</strong> representing academic institutions, international organizations, and NGOs. Individual names will be listed once consent is received.</p>
+                    <p class="advisory-intro">Our advisory group includes <strong>10+ members</strong> representing academic institutions, international organizations, and NGOs. Individual names will be listed once consent is received.</p>
+                    <div class="advisory-table-wrap">
+                        <table class="advisory-table">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Affiliation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Sonja Anderson</td><td>Inter-agency Network for Education in Emergencies (INEE)</td></tr>
+                                <tr><td>Elise Baudot</td><td>International Council of Voluntary Agencies (ICVA)</td></tr>
+                                <tr><td>Sara Casey</td><td>Columbia University</td></tr>
+                                <tr><td>Mya Gordon</td><td>Save the Children</td></tr>
+                                <tr><td>Antonis Kousoulis</td><td>Global Mental Health Action Network</td></tr>
+                                <tr><td>Cicely Marston</td><td>University of Oxford</td></tr>
+                                <tr><td>Catherine Maternowska</td><td>University of Edinburgh</td></tr>
+                                <tr><td>Eric Nkansah</td><td>Kumasi Technical University</td></tr>
+                                <tr><td>Don Operario</td><td>Emory University</td></tr>
+                                <tr><td>Rachel Steinacher</td><td>Innovations for Poverty Action (IPA)</td></tr>
+                                <tr><td>Eve Suzy Clara Le Dem</td><td>United Nations Office for the Coordination of Humanitarian Affairs (UN OCHA)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <h2 class="section-title">Our Affiliations</h2>
-                <div class="affiliation-card">
-                    <a href="http://tobiasdevelopment.indiana.edu/" target="_blank" rel="noopener noreferrer" class="affiliation-link">
-                        <img src="images/iu-trident-logo.png" alt="IU Logo" class="affiliation-logo">
-                        <div class="affiliation-content">
-                            <h3>Tobias Center for Innovation in International Development</h3>
-                            <p>Indiana University at Bloomington</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="affiliation-card">
-                    <a href="https://edin.ac/3KSinan" target="_blank" rel="noopener noreferrer" class="affiliation-link">
-                        <div class="affiliation-content">
-                            <h3>Comparative Education and International Development Research Group</h3>
-                            <p>University of Edinburgh</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="affiliation-card">
-                    <a href="https://edin.ac/3KWB0tP" target="_blank" rel="noopener noreferrer" class="affiliation-link">
-                        <div class="affiliation-content">
-                            <h3>Third Sector Research Centre</h3>
-                            <p>University of Birmingham</p>
-                        </div>
-                    </a>
+                <div class="affiliations-grid">
+                    <div class="affiliation-card">
+                        <a href="http://tobiasdevelopment.indiana.edu/" target="_blank" rel="noopener noreferrer" class="affiliation-link">
+                            <div class="affiliation-logo-frame">
+                                <img src="images/hamiltonlugar_lockup_WEB_h6.png" alt="Indiana University Hamilton Lugar School logo" class="affiliation-logo">
+                            </div>
+                            <div class="affiliation-content">
+                                <h3>Tobias Center for Innovation in International Development</h3>
+                                <p>Indiana University at Bloomington</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="affiliation-card">
+                        <a href="https://edin.ac/3KSinan" target="_blank" rel="noopener noreferrer" class="affiliation-link">
+                            <div class="affiliation-logo-frame">
+                                <img src="images/Edinburgh.jpeg" alt="University of Edinburgh logo" class="affiliation-logo">
+                            </div>
+                            <div class="affiliation-content">
+                                <h3>Comparative Education and International Development Research Group</h3>
+                                <p>University of Edinburgh</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="affiliation-card">
+                        <a href="https://edin.ac/3KWB0tP" target="_blank" rel="noopener noreferrer" class="affiliation-link">
+                            <div class="affiliation-logo-frame">
+                                <img src="images/Birmingham.jpeg" alt="University of Birmingham logo" class="affiliation-logo">
+                            </div>
+                            <div class="affiliation-content">
+                                <h3>Third Sector Research Centre</h3>
+                                <p>University of Birmingham</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
                 <h2 class="section-title">Contact Information</h2>
