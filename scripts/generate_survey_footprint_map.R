@@ -4,28 +4,19 @@ library(rnaturalearth)
 library(sf)
 
 output_file <- file.path("images", "survey-footprint-slide.png")
+country_file <- file.path("data", "responded_countries_clean.csv")
 
-existing_iso3 <- c(
-  "ARM", "AUT", "BRA", "CAF", "COL", "ETH", "FRA", "GBR", "KEN", "MWI",
-  "MEX", "MMR", "MOZ", "NGA", "NPL", "PHL", "SDN", "SLE", "TZA", "USA",
-  "VEN", "VNM", "ZAF", "ZMB"
-)
+responded_countries <- read.csv(country_file, stringsAsFactors = FALSE) |>
+  filter(include_on_map == TRUE, !is.na(iso3), iso3 != "")
 
-new_additions_iso3 <- c(
-  "CRI", # Costa Rica
-  "GNQ", # Equatorial Guinea
-  "GHA", # Ghana
-  "IDN", # Indonesia
-  "IRQ"  # Iraq
-)
+responded_iso3 <- sort(unique(responded_countries$iso3))
 
-responded_iso3 <- sort(unique(c(existing_iso3, new_additions_iso3)))
-
-world <- ne_countries(scale = "small", returnclass = "sf") |>
+world <- ne_countries(scale = "medium", returnclass = "sf") |>
   filter(adm0_a3 != "ATA") |>
   mutate(
+    country_key = if_else(!is.na(iso_a3) & iso_a3 != "-99", iso_a3, adm0_a3),
     response_status = if_else(
-      adm0_a3 %in% responded_iso3,
+      country_key %in% responded_iso3,
       "Responded countries",
       "Other countries"
     ),
@@ -35,7 +26,7 @@ world <- ne_countries(scale = "small", returnclass = "sf") |>
     )
   )
 
-missing_iso3 <- setdiff(responded_iso3, world$adm0_a3)
+missing_iso3 <- setdiff(responded_iso3, world$country_key)
 if (length(missing_iso3) > 0) {
   stop("Countries not found in Natural Earth data: ", paste(missing_iso3, collapse = ", "))
 }
@@ -112,6 +103,7 @@ ragg::agg_png(
 print(map_plot)
 dev.off()
 
-cat("New additions:", paste(c("Costa Rica", "Equatorial Guinea", "Ghana", "Indonesia", "Iraq"), collapse = ", "), "\n")
+cat("Country input:", country_file, "\n")
+cat("Responded countries:", paste(sort(responded_countries$country_name), collapse = ", "), "\n")
 cat("Responded country count:", country_count, "\n")
 cat("Map written to:", output_file, "\n")
